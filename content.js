@@ -6,8 +6,8 @@ document.head.appendChild(link);
 document.addEventListener("DOMContentLoaded", () => {
     let targetInput = document.getElementById("reject_reason");
     console.log(targetInput); 
-});
-// let targetInput = document.getElementById("addRemarkInput");
+
+    // let targetInput = document.getElementById("addRemarkInput");
 
 let remarks_array = ["God", "Jesus", "Allah", "Buddha", "Hindu Deity", "angel", "witch", "cross", "pentagram", "mosque", "quran", "cleavage", "close-up", "45 degrees", "less than 45 degrees", "suspected naked", "exaggerated breast", "kissing"];
 
@@ -43,6 +43,10 @@ targetInput.addEventListener("mousedown", (event) => {
 
     }
 });
+    
+});
+
+
 
 
 
