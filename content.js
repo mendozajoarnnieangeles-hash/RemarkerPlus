@@ -5,13 +5,13 @@ document.head.appendChild(link);
 
 let isBannerActive = false;
 
-let remarks_array = ["God", "Jesus", "Allah", "Buddha", "Hindu Deity", "angel", "witch", "cross", "pentagram", "mosque", "quran", "cleavage", "close-up", "45 degrees", "less than 45 degrees", "suspected naked", "exaggerated breast", "kissing"];
+let remarks_array = ["God", "Jesus", "Allah", "Buddha", "Hindu Deity", "angel", "witch", "cross", "bible verse", "pentagram", "yinyang", "mosque", "quran", "pig", "cleavage", "close-up", "45 degrees", "less than 45 degrees", "side boob", "under boob", "sticking out tongue", "no human figure", "suspected naked", "exaggerated breast", "kissing"];
 
 let body = document.body;
 
 body.addEventListener("mousedown", (event) => {
 
-    if (event.button === 1 && !isBannerActive) {
+    if (event.button === 2 && !isBannerActive) {
         console.log("mousedown event is detected!");
 
         isBannerActive = true;
@@ -65,7 +65,7 @@ body.addEventListener("mousedown", (event) => {
 
                 nativeSetter.call(
                     targetInput,
-                    targetInput.value + `\n ${event.target.textContent}`
+                    targetInput.value + `${event.target.textContent}`
                 );
 
                 targetInput.dispatchEvent(new Event("input", { bubbles: true }));
@@ -80,4 +80,5 @@ body.addEventListener("mousedown", (event) => {
     }
 
 }, true);
+
 
