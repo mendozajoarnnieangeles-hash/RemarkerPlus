@@ -1,38 +1,83 @@
-#remarker-banner {
-    position: fixed;
-    /* display: flex; */
-    max-width: 70vw;
+const link = document.createElement("link");
+link.rel = "stylesheet";
+link.href = chrome.runtime.getURL("style.css");
+document.head.appendChild(link);
 
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+let isBannerActive = false;
 
-    min-width: 300px;
-    padding: 20px;
+let remarks_array = ["God", "Jesus", "Allah", "Buddha", "Hindu Deity", "angel", "witch", "cross", "pentagram", "mosque", "quran", "cleavage", "close-up", "45 degrees", "less than 45 degrees", "suspected naked", "exaggerated breast", "kissing"];
 
-    background: #acacac;
-    color: white;
+let body = document.body;
 
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+body.addEventListener("mousedown", (event) => {
 
-    z-index: 999999;
+    if (event.button === 1 && !isBannerActive) {
+        console.log("mousedown event is detected!");
 
-    text-align: center;
-}
+        isBannerActive = true;
+        event.preventDefault();
 
-#remarker-banner button, #bannerCloseBtn {
-    margin: 8px;
-    padding: 6px 14px;
-    cursor: pointer;
-    height: 50px;
-    width: 150px;
-    color: black;
-}
+        let targetInput = document.getElementById("reject_reason");
+        console.log(targetInput);
 
-#bannerCloseBtn {
+        const banner = document.createElement("div");
+        banner.id = "remarker-banner";
 
-    background-color: brown;
-    color: white;
+        // generate buttons
 
-}
+        remarks_array.forEach(element => {
+
+            let btn = document.createElement("button")
+            btn.textContent = element
+            banner.appendChild(btn)
+
+        })
+
+        // generating close button
+
+        let closeBtn = document.createElement("button");
+        closeBtn.id = "bannerCloseBtn";
+        closeBtn.textContent = "close";
+        banner.appendChild(closeBtn);
+
+        // assigning event listener for the whole div
+
+        banner.addEventListener("click", function (event) {
+
+            if (event.target.tagName !== "BUTTON") {
+                isBannerActive = false;
+                return;
+
+            }
+            else if (event.target.id === "bannerCloseBtn") {
+                isBannerActive = false;
+                banner.remove();
+                return;
+
+            }
+            else {
+                isBannerActive = false;
+
+                const nativeSetter = Object.getOwnPropertyDescriptor(
+                    window.HTMLTextAreaElement.prototype,
+                    "value"
+                ).set;
+
+                nativeSetter.call(
+                    targetInput,
+                    targetInput.value + `\n ${event.target.textContent}`
+                );
+
+                targetInput.dispatchEvent(new Event("input", { bubbles: true }));
+
+                banner.remove();
+            }
+
+        })
+
+        document.body.appendChild(banner)
+
+    }
+
+}, true);
+
