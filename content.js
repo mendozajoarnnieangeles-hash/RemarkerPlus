@@ -10,10 +10,10 @@ let remarks_array = ["God", "Jesus", "Allah", "Buddha", "Hindu Deity", "angel", 
 let body = document.body;
 
 body.addEventListener("mousedown", (event) => {
- 
+
     if (event.button === 1 && !isBannerActive) {
         console.log("mousedown event is detected!");
-        
+
         isBannerActive = true;
         event.preventDefault();
 
@@ -57,9 +57,20 @@ body.addEventListener("mousedown", (event) => {
             }
             else {
                 isBannerActive = false;
-                targetInput.value += `\n ${event.target.textContent}`;
-                banner.remove();
 
+                const nativeSetter = Object.getOwnPropertyDescriptor(
+                    window.HTMLTextAreaElement.prototype,
+                    "value"
+                ).set;
+
+                nativeSetter.call(
+                    targetInput,
+                    targetInput.value + `\n ${event.target.textContent}`
+                );
+
+                targetInput.dispatchEvent(new Event("input", { bubbles: true }));
+
+                banner.remove();
             }
 
         })
