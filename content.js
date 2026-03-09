@@ -10,6 +10,7 @@ let remarks_array = ["God", "Jesus", "Allah", "Buddha", "Hindu Deity", "angel", 
 let body = document.body;
 
 body.addEventListener("click", (event) => {
+    console.log("clicked")
 
     if (event.target.classList.contains("rocket-tag") && event.target.classList.contains("components_tag__eBgou")) {
 
@@ -96,6 +97,7 @@ body.addEventListener("mousedown", (event) => {
     }
 
 }, true);
+
 
 
 
