@@ -9,6 +9,22 @@ let remarks_array = ["God", "Jesus", "Allah", "Buddha", "Hindu Deity", "angel", 
 
 let body = document.body;
 
+body.addEventListener("click", (event) => {
+
+    if (event.target.classList.contains("rocket-tag") && event.target.classList.contains("components_tag__eBgou")) {
+
+        console.log(event.target.textContent);
+        
+    };
+
+    else {
+
+        return;
+        
+    }
+    
+}
+
 body.addEventListener("mousedown", (event) => {
 
     if (event.button === 2 && !isBannerActive) {
@@ -80,5 +96,6 @@ body.addEventListener("mousedown", (event) => {
     }
 
 }, true);
+
 
 
