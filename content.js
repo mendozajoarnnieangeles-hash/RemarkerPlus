@@ -17,13 +17,7 @@ body.addEventListener("click", (event) => {
         console.log(event.target.textContent);
         
     };
-
-    else {
-
-        return;
-        
-    }
-    
+ 
 }
 
 body.addEventListener("mousedown", (event) => {
@@ -97,6 +91,7 @@ body.addEventListener("mousedown", (event) => {
     }
 
 }, true);
+
 
 
 
