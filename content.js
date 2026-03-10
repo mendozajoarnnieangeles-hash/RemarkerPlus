@@ -5,7 +5,7 @@ document.head.appendChild(link);
 
 let isBannerActive = false;
 
-let remarks_array = ["God", "Jesus", "Allah", "Buddha", "Hindu Deity", "angel", "witch", "cross", "bible verse", "pentagram", "yinyang", "mosque", "quran", "pig", "cleavage", "close-up", "45 degrees", "less than 45 degrees", "side boob", "under boob", "sticking out tongue", "no human figure", "suspected naked", "exaggerated breast", "kissing"];
+let remarks_array = ["God", "Jesus", "Mary", "Allah", "Buddha", "Hindu Deity", "angel", "witch", "tarot", "cross", "bible verse", "pentagram", "star of David", "yinyang", "mosque", "quran", "pig", "cleavage", "close-up", "buttocks", "side boob", "under boob", "sticking out tongue", "no human figure", "suspected naked", "exaggerated breast", "kissing"];
 
 let body = document.body;
 
@@ -19,6 +19,8 @@ body.addEventListener("click", (event) => {
     };
  
 }
+//,true
+);
 
 body.addEventListener("mousedown", (event) => {
 
@@ -91,6 +93,7 @@ body.addEventListener("mousedown", (event) => {
     }
 
 }, true);
+
 
 
 
