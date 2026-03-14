@@ -1,11 +1,11 @@
-#remarker-banner {
+.remarker-banner, .filteredOptionsBanner {
     position: fixed;
     /* display: flex; */
     max-width: 70vw;
 
-    top: 30%;
+    bottom: 5%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -0%);
 
     min-width: 300px;
     padding: 20px;
@@ -21,19 +21,19 @@
     text-align: center;
 }
 
-#remarker-banner button, #bannerCloseBtn {
+.remarker-banner button, .filteredOptionsBanner button, #bannerCloseBtn {
     margin: 8px;
     padding: 6px 14px;
     cursor: pointer;
     height: 50px;
     width: 150px;
     color: black;
+    vertical-align: top;
 }
 
-#bannerCloseBtn {
+#bannerCloseBtn, #filteredOptionsCloseBtn {
 
     background-color: brown;
     color: white;
 
 }
-
