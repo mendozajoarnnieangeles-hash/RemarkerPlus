@@ -7,15 +7,16 @@ let isBannerActive = false;
 
 //--------------------- NEW ARRAYS ---------------------------------
 
-let remarks_category = ["RELIGION", "SEXY", "VULGAR", "ADULT", "EROTIC", "RESTRICT BRAND", "ALL CONTROLLED IP", "PORNOGRAPHY"]
+let remarks_category = ["RELIGION", "LIGHT SEXY", "SEXY", "VULGAR", "ADULT", "EROTIC", "RESTRICT BRAND", "ALL CONTROLLED IP", "PORNOGRAPHY"]
 
 let religion_remarks_array = ["God", "Jesus", "Mary", "Allah", "Buddha", "Hindu Deity", "angel", "witch", "tarot pattern", "cross", "pentagram", "star of David", "church", "mosque", "quran", "pig", "bible/verse", "yinyang", "runes", "Satan", "Monk", "Triple Moon", "divination-related", "Amen"];
+let light_sexy_remarks_array = ["back exposure", "thigh", "belly", "male - exposed nipples"]
 let sexy_remarks_array = ["buttocks", "cleavage", "close-up", "fishnet - standing"]
-let vulgar_remarks_array = ["buttocks", "inverted V", "side boob", "under boob", "lying", "supported lying", "kneeling", "prone", "taking-off", "sticking-out tongue", "shadow"]
+let vulgar_remarks_array = ["buttocks", "inverted V", "side boob", "under boob", "lying", "supported lying", "kneeling", "prone", "taking-off", "sticking-out tongue", "shadow", "bulge - more than 1/2"]
 let adult_remarks_array = ["suspected naked", "exaggerated breast", "realistic sex toy", "with human figure", "kissing", "male - teasing", "lean forward", "genital-like", "suspected nipple"]
 let pornography_remarks_array = ["camel toe", "opaque white liquid", "mosaic", "sexual behavior/gesture", "BDSM + face exposed", "tied-up + real human", "butt line", "genital", "nipple"]
 
-let erotic_clothes_remarks_array = ["suspender", "hollowed-out", "high-slit", "lingerie", "cosplay"]
+let erotic_clothes_remarks_array = ["suspender", "hollowed-out", "high-slit", "lingerie", "cosplay", "thong"]
 let restrict_brand_remarks_array = ["Nike", "Adidas", "NFL", "MLB", "FIFA", "NHL", "Iphone", "Samsung"]
 let all_controlled_ip_remarks_array = ["Disney", "Sanrio", "Marvel", "DC", "Harry Potter", "Naruto", "Dragon Ball", "One Piece", "Jujutsu Kaisen", "Demon Slayer"]
 
@@ -48,6 +49,9 @@ function generateDynamicOptions(event) {
 
         case "Religion":
             createCategorizedOptions("RELIGION");
+            break;
+        case "Light Sexy":
+            createCategorizedOptions("LIGHT SEXY");
             break;
         case "Sexy":
             createCategorizedOptions("SEXY");
@@ -156,6 +160,13 @@ body.addEventListener("mousedown", (event) => {
                 return;
 
             }
+            else if (event.target.textContent === "LIGHT SEXY") {
+                isBannerActive = false;
+                banner.remove();
+                createCategorizedOptions("LIGHT SEXY")
+                return;
+
+            }
             else if (event.target.textContent === "SEXY") {
                 isBannerActive = false;
                 banner.remove();
@@ -224,6 +235,12 @@ function createCategorizedOptions(category) {
 
     if (category === "RELIGION") {
         targetArray = religion_remarks_array
+
+    }
+
+    else if (category === "LIGHT SEXY") {
+
+        targetArray = light_sexy_remarks_array
 
     }
 
@@ -361,40 +378,3 @@ function insertAutoRemark(tag) {
 
 
 }
-            else if (event.target.id === "bannerCloseBtn") {
-                isBannerActive = false;
-                banner.remove();
-                return;
-
-            }
-            else {
-                isBannerActive = false;
-
-                const nativeSetter = Object.getOwnPropertyDescriptor(
-                    window.HTMLTextAreaElement.prototype,
-                    "value"
-                ).set;
-
-                nativeSetter.call(
-                    targetInput,
-                    targetInput.value + `${event.target.textContent}`
-                );
-
-                targetInput.dispatchEvent(new Event("input", { bubbles: true }));
-
-                banner.remove();
-            }
-
-        })
-
-        document.body.appendChild(banner)
-
-    }
-
-}, true);
-
-
-
-
-
-
